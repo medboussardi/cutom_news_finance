@@ -1,12 +1,17 @@
 import csv
+import random
+
+"""
+    Retrieve a random quote from specified CSV file
+"""
 
 def get_random_quote():
     try:
         with open('quotes.csv','r') as csvfile:
             quotes = [{'Author':line[0],'quotes':line[1]} for line in csv.reader(csvfile,delimiter='|')]
     except IOError:
-        quotes = {'Author':'Robert Arnott','quotes':"In investing what is comfortable is rarely profitable."}        
-    return quotes 
+        quotes = [{'Author':'Robert Arnott','quotes':"In investing what is comfortable is rarely profitable."}]        
+    return random.choice(quotes)
 
 def get_weather_forecast():
     pass
